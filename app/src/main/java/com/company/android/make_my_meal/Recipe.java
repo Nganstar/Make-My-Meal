@@ -16,9 +16,10 @@ public class Recipe{
     private Boolean isFavorite;
 
     //constructors
-    public Recipe(String image, String ingredients, String steps) {
+    public Recipe(String image, String title,  String ingredients, String steps) {
         this(UUID.randomUUID().toString());
         this.mImage = image;
+        this.mTitle = title;
         this.mIngredients = ingredients;
         this.mSteps = steps;
         this.isFavorite = false;
@@ -29,6 +30,7 @@ public class Recipe{
     public Recipe(String id) {}
 
     //methods
+
     public String getImage() {
         return mImage;
     }

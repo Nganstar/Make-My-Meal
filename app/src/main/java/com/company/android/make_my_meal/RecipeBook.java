@@ -17,18 +17,31 @@ public class RecipeBook {
     private List<Recipe> myRecipes;
     private List<Recipe> rssRecipes;
 
+
     public void setFavRecipes(Recipe r, Boolean state){
+        //odd or remove recipe from favourite list
         r.setFavorite(state);
         if (state == true){myFavRecipes.add(r);}
         else myFavRecipes.remove(getPosition(r));
     }
 
      public int getPosition(Recipe r){
+        //get position of the recipe in the list
         int position = 0;
         while(!myFavRecipes.get(position).getId().equals(r.getId())){
             position++;
         }
         return position;
+     }
+
+     public Recipe getRecipe(String id){
+         //get recipe from the list
+         for(Recipe r : myRecipes){
+             if(r.getId().equals(id)){
+                 return r;
+             }
+         }
+         return null;
      }
 
 }
