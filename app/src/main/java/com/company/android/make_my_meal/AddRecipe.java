@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -22,10 +23,10 @@ public class AddRecipe extends AppCompatActivity {
     public void CreateCard(View view){
 
         //extracts data from editTexts
-        EditText imageEditText = (EditText) findViewById(R.id.image_text_edit);
-        EditText titleEditText = (EditText) findViewById(R.id.title_text_edit);
-        EditText stepsEditText = (EditText) findViewById(R.id.steps_text_edit);
-        EditText ingredientEditText = (EditText) findViewById(R.id.ingredients_text_edit);
+        TextView imageEditText = (TextView) findViewById(R.id.image_text_edit);
+        TextView titleEditText = (TextView) findViewById(R.id.title_edit_text);
+        TextView stepsEditText = (TextView) findViewById(R.id.steps_edit_text);
+        TextView ingredientEditText = (TextView) findViewById(R.id.ingredients_edit_text);
 
         //convert data to string
         String imageText = imageEditText.getText().toString();

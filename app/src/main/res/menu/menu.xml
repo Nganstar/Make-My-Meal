@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/new_card"
+        android:icon="@drawable/ic_add_recipe"
+        android:title="@string/add_recipe"
+        app:showAsAction="ifRoom|withText"/>
+
+    <item
+        android:id="@+id/scan_doc"
+        android:icon="@drawable/ic_scan_doc"
+        android:title="@string/scan_doc"
+        app:showAsAction="ifRoom|withText"/>
+
+</menu>
