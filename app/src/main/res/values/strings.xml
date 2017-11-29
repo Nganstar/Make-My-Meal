@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Make-My-Meal</string>
+    <string name="app_name">RecipeBook</string>
     <string name="add_recipe">add_recipe</string>
     <string name="scan_doc">scan_doc</string>
 </resources>

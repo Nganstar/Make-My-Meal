@@ -31,13 +31,14 @@ public boolean onCreateOptionsMenu(Menu menu) {
             case R.id.new_card: // Create the second activity to add a new card
                 intent = new Intent(this,AddRecipe.class);
                 startActivity(intent);
+                return true;
             case R.id.scan_doc: // Create the second activity to add a new card
                 intent = new Intent(this,ScanDoc.class);
                 startActivity(intent);
-
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
-        }
+    }
     } //onOptionsItemsSelected
 
     ///////////////////////////////////////////////////////////////////////////////////////////////
