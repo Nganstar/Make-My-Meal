@@ -9,12 +9,10 @@
 
     <LinearLayout
         android:id="@+id/LinearVertical"
-        android:layout_width="395dp"
-        android:layout_height="518dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,23 +22,29 @@
         <ImageView
             android:id="@+id/detail_image_view"
             android:layout_width="match_parent"
-            android:layout_height="164dp"
+            android:layout_height="119dp"
             app:srcCompat="@drawable/common_google_signin_btn_icon_dark_normal"/>
 
         <TextView
-            android:id="@+id/details_text_view"
+            android:id="@+id/ingredients_text_view"
             android:layout_width="match_parent"
-            android:layout_height="449dp"/>
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="TextView"/>
+
+        <TextView
+            android:id="@+id/steps_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/LinearHorizontal"
-        android:layout_width="409dp"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
