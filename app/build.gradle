@@ -2,10 +2,9 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.2"
     defaultConfig {
-        applicationId "com.company.android.make_my_meal"
-        minSdkVersion 18
+        applicationId "com.company.android.sabr4730_nganXXXX_RecipeBook"
+        minSdkVersion 15
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"

@@ -1,4 +1,4 @@
-package com.company.android.make_my_meal.database;
+package com.company.android.sabr4730_ngan7260_final_project.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

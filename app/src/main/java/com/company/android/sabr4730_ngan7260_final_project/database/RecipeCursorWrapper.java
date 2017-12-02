@@ -1,9 +1,9 @@
-package com.company.android.make_my_meal.database;
+package com.company.android.sabr4730_ngan7260_final_project.database;
 
 import android.database.Cursor;
 import android.database.CursorWrapper;
 
-import com.company.android.make_my_meal.Recipe;
+import com.company.android.sabr4730_ngan7260_final_project.Recipe;
 
 
 /**

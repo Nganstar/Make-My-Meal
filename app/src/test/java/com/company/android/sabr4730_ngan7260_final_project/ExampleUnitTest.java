@@ -1,4 +1,4 @@
-package com.company.android.make_my_meal;
+package com.company.android.sabr4730_ngan7260_final_project;
 
 import org.junit.Test;
 

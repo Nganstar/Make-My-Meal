@@ -1,4 +1,4 @@
-package com.company.android.make_my_meal;
+package com.company.android.sabr4730_ngan7260_final_project;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setHasOptionsMenu(true);  //for fragment
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_recipe_details);
     }
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //displaying menu, need modification when fragment is implemented

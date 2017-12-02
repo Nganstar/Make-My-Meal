@@ -1,4 +1,4 @@
-package com.company.android.make_my_meal.database;
+package com.company.android.sabr4730_ngan7260_final_project.database;
 
 /**
  * Created by akhma on 2017-11-24.
@@ -6,7 +6,7 @@ package com.company.android.make_my_meal.database;
 
 public class RecipeDBSchema {
     public static final class RecipeTable {
-        public static final String NAME = "Cards";
+        public static final String NAME = "Recipe";
 
         public static final class Cols {
             public static final String MID = "mId";

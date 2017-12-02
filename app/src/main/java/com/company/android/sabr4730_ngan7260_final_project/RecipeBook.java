@@ -1,13 +1,13 @@
-package com.company.android.make_my_meal;
+package com.company.android.sabr4730_ngan7260_final_project;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.company.android.make_my_meal.database.RecipeBaseHelper;
-import com.company.android.make_my_meal.database.RecipeCursorWrapper;
-import com.company.android.make_my_meal.database.RecipeDBSchema;
+import com.company.android.sabr4730_ngan7260_final_project.database.RecipeBaseHelper;
+import com.company.android.sabr4730_ngan7260_final_project.database.RecipeCursorWrapper;
+import com.company.android.sabr4730_ngan7260_final_project.database.RecipeDBSchema;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +34,11 @@ public class RecipeBook {
                 .getWritableDatabase();
 
         //initialize if database is empty
+        String count = "SELECT count(*) FROM Recipe";
+        Cursor mCursor = mDatabase.rawQuery(count, null);
+        mCursor.moveToFirst();
+        int iCount = mCursor.getInt(0);
+        if(iCount==0){initialize();}
     }
 
     public void setFavRecipes(Recipe r, Boolean state){
@@ -51,16 +56,6 @@ public class RecipeBook {
         }
         return position;
      }
-
-//     public Recipe getRecipe(String id){
-//        //get recipe from the list
-//        for(Recipe r : myRecipes){
-//            if(r.getId().equals(id)){
-//                return r;
-//            }
-//        }
-//        return null;
-//     }
 
     public static RecipeBook get(Context context) { //ch 8
         if (sRecipeBook == null) {
@@ -146,6 +141,22 @@ public class RecipeBook {
 
     public SQLiteDatabase getmDatabase(){
         return mDatabase;
+    }
+
+    void initialize(){
+
+//        //initializes database
+//        Recipe r = new Recipe("profile", "What is your name?", "Akhmad Sabri");
+//        addRecipe(r);
+//
+//        r = new Recipe("laurier_logo", "What do you do?", "I am a student");
+//        addRecipe(r);
+//
+//        r = new Recipe("indonesia1", "Where are you from?", "Indonesia");
+//        addRecipe(r);
+//
+//        r = new Recipe("soccer", "What is your favourite sport?", "Soccer");
+//        addRecipe(r);
     }
 
 
