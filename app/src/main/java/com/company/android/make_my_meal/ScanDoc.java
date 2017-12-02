@@ -78,10 +78,11 @@ public class ScanDoc extends AppCompatActivity {
                 .build();
 
         cameraView.getHolder().addCallback(new SurfaceHolder.Callback() {
+            @SuppressLint("MissingPermission")
             @Override
             public void surfaceCreated(SurfaceHolder holder) {
                 try {
-                    //noinspection MissingPermission
+                    //noinspection MissingPermission (user need to grant permission on their device
                     cameraSource.start(cameraView.getHolder());
                 } catch (IOException ex) {
                     ex.printStackTrace();
