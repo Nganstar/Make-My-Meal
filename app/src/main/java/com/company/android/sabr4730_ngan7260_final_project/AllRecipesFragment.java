@@ -43,7 +43,7 @@ public class AllRecipesFragment extends Fragment {
         View view = inflater.inflate(R.layout.recycler_view_article_list, container, false);
 
         mCardListRecyclerView = (RecyclerView) view
-                .findViewById(R.id.card_recycler_view);
+                .findViewById(R.id.recipe_recycler_view);
         mCardListRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         //remove interface from the assignment page
@@ -125,7 +125,7 @@ public class AllRecipesFragment extends Fragment {
 
         @Override
         public void onClick(View view) {
-            Intent intent = MainActivity.newIntent(getActivity(), mRecipe.getId());
+            Intent intent = DetailActivity.newIntent(getActivity(), mRecipe.getId());
             startActivity(intent);
         }
     }

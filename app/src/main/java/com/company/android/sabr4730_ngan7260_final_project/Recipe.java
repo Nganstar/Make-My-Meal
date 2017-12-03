@@ -17,7 +17,7 @@ public class Recipe{
 
     //constructors
     public Recipe(String image, String title,  String ingredients, String steps) {
-        this(UUID.randomUUID().toString());
+        this.mId=(UUID.randomUUID().toString());
         this.mImage = image;
         this.mTitle = title;
         this.mIngredients = ingredients;

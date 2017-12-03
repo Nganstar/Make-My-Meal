@@ -4,6 +4,7 @@ package com.company.android.sabr4730_ngan7260_final_project;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +39,7 @@ public class RecipeDetailsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         String recipeId = (String) getArguments().getSerializable(CARD_ID);
+        Log.d("check","error: "+ recipeId);
         mRecipe = RecipeBook.get(getActivity()).getRecipe(recipeId);
     }
 
@@ -53,17 +55,21 @@ public class RecipeDetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.recipe_details_fragment, container, false);
-
+        Log.d("check","error: "+ mRecipe.getImage());
         mTitle = (TextView) view.findViewById(R.id.title_text_view);
         mTitle.setText(mRecipe.getTitle());
-        mImage =(ImageView)view.findViewById(R.id.image_view);
+        mImage =(ImageView)view.findViewById(R.id.detail_image_view);
+
+
         Resources res = getResources();
         int resourceId = res.getIdentifier(mRecipe.getImage(), "drawable",
                 getActivity().getPackageName());
         mImage.setImageResource(resourceId);
+
+
         mSteps = (TextView) view.findViewById(R.id.steps_text_view);
         mSteps.setText(mRecipe.getSteps());
-        mIngerients=(TextView) view.findViewById(R.id.ingredients_edit_text);
+        mIngerients=(TextView) view.findViewById(R.id.detail_ingredients_text_view);
         mIngerients.setText(mRecipe.getIngredients());
 
         return view;

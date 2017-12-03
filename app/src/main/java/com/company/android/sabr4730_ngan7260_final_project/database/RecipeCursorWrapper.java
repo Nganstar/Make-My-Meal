@@ -23,7 +23,13 @@ public class RecipeCursorWrapper extends CursorWrapper {
         String steps = getString(getColumnIndex(RecipeDBSchema.RecipeTable.Cols.STEPS));
         Boolean isfavourite = Boolean.getBoolean(String.valueOf(RecipeDBSchema.RecipeTable.Cols.ISFAVOURITE));
 
-        Recipe r = new Recipe(image, title, ingredients, steps);
+        Recipe r = new Recipe(mid);
+        r.setImage(image);
+        r.setIngredients(ingredients);
+        r.setTitle(title);
+        r.setSteps(steps);
+        r.setFavorite(isfavourite);
+
         return r;
     }
 }

@@ -15,7 +15,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-public class MainActivity extends SingleFragmentActivity {
+public class MainActivity extends AppCompatActivity {
     private static final String EXTRA_ARTICLE_ID =
             "example.com.sabr4730_a5";
     /**
@@ -80,17 +80,17 @@ public class MainActivity extends SingleFragmentActivity {
         }
     } //onOptionsItemsSelected
 
-    public static Intent newIntent(Context packageContext, String articleId) {
-        Intent intent = new Intent(packageContext, MainActivity.class);
-        intent.putExtra(EXTRA_ARTICLE_ID, articleId);
-        return intent;
-    }
-    @Override
-    protected Fragment createFragment() {
-        String cardId = (String) getIntent()
-                .getSerializableExtra(EXTRA_ARTICLE_ID);
-        return RecipeDetailsFragment.newInstance(cardId);
-    }
+//    public static Intent newIntent(Context packageContext, String articleId) {
+//        Intent intent = new Intent(packageContext, MainActivity.class);
+//        intent.putExtra(EXTRA_ARTICLE_ID, articleId);
+//        return intent;
+//    }
+//    @Override
+//    protected Fragment createFragment() {
+//        String cardId = (String) getIntent()
+//                .getSerializableExtra(EXTRA_ARTICLE_ID);
+//        return RecipeDetailsFragment.newInstance(cardId);
+//    }
 
     /**
      * A placeholder fragment containing a simple view.

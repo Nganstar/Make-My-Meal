@@ -99,7 +99,7 @@ public class RecipeBook {
     }
 
     public void updateRecipe(Recipe r) {
-        String uuidString = r.getId().toString();
+        String uuidString = r.getId();
         ContentValues values = getContentValues(r);
 
         mDatabase.update(RecipeDBSchema.RecipeTable.NAME, values,
@@ -129,7 +129,7 @@ public class RecipeBook {
         values.put(RecipeDBSchema.RecipeTable.Cols.TITLE, r.getTitle());
         values.put(RecipeDBSchema.RecipeTable.Cols.INGREDIENTS, r.getIngredients());
         values.put(RecipeDBSchema.RecipeTable.Cols.STEPS, r.getSteps());
-        values.put(String.valueOf(RecipeDBSchema.RecipeTable.Cols.ISFAVOURITE), r.getFavourite());
+        //values.put(String.valueOf(RecipeDBSchema.RecipeTable.Cols.ISFAVOURITE), r.getFavourite());
 
 
         return values;
