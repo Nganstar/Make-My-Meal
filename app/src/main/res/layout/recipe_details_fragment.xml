@@ -7,49 +7,57 @@
     android:layout_height="match_parent"
     tools:layout_editor_absoluteY="81dp">
 
-    <LinearLayout
-        android:id="@+id/LinearVertical"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+    <ImageView
+        android:id="@+id/detail_image_view"
+        android:layout_width="match_parent"
+        android:layout_height="119dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LinearHorizontal">
+        app:layout_constraintTop_toBottomOf="@+id/LinearHorizontal"
+        app:srcCompat="@drawable/common_google_signin_btn_icon_dark_normal"/>
 
-        <ImageView
-            android:id="@+id/detail_image_view"
-            android:layout_width="match_parent"
-            android:layout_height="119dp"
-            app:srcCompat="@drawable/common_google_signin_btn_icon_dark_normal"/>
-
-        <TextView
-            android:id="@+id/detail_ingredients_text_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Ingredient:"/>
-
-        <TextView
-            android:id="@+id/steps_text_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Steps:"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/LinearHorizontal"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/steps_text_view"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:text="Steps:"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detail_ingredients_text_view"/>
+
+    <TextView
+        android:id="@+id/detail_ingredients_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:text="Ingredient:"
+        app:layout_constraintBottom_toTopOf="@+id/steps_text_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detail_image_view"/>
+
+    <LinearLayout
+        android:id="@+id/LinearHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/LinearVertical"
+        app:layout_constraintBottom_toTopOf="@+id/detail_image_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,7 +68,7 @@
             android:layout_width="344dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            />
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"/>
 
         <CheckBox
             android:id="@+id/favourite_checkBox"
