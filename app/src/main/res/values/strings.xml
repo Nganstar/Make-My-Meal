@@ -2,4 +2,7 @@
     <string name="app_name">RecipeBook</string>
     <string name="add_recipe">add_recipe</string>
     <string name="scan_doc">scan_doc</string>
+    <string name="all_recipes">Tab 1</string>
+    <string name="favourites">Tab 2</string>
+    <string name="online">Tab 3</string>
 </resources>

@@ -1,22 +1,19 @@
 package com.company.android.sabr4730_ngan7260_final_project;
 
+/**
+ * Created by akhma on 2017-11-24.
+ */
+
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.SurfaceView;
 import android.widget.TextView;
-
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.text.TextRecognizer;
-
-/**
- * Created by akhma on 2017-11-24.
- */
-
 import android.util.SparseArray;
 import android.view.SurfaceHolder;
-
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.text.TextBlock;
 
