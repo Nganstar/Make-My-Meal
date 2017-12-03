@@ -13,7 +13,7 @@ public class Recipe{
     private String mTitle;
     private String mIngredients;
     private String mSteps;
-    private Boolean isFavourite;
+    private int isFavourite;
 
     //constructors
     public Recipe(String image, String title,  String ingredients, String steps) {
@@ -22,7 +22,7 @@ public class Recipe{
         this.mTitle = title;
         this.mIngredients = ingredients;
         this.mSteps = steps;
-        this.isFavourite = false;
+        this.isFavourite = 0;
     }
 
     public Recipe(){};
@@ -47,7 +47,7 @@ public class Recipe{
         return mTitle;
     }
 
-    public Boolean getFavourite() {
+    public int getFavourite() {
         return isFavourite;
     }
 
@@ -71,7 +71,7 @@ public class Recipe{
         mTitle = title;
     }
 
-    public void setFavorite(Boolean state) {
+    public void setFavorite(int state) {
         isFavourite = state;
     }
 }

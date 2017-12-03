@@ -14,7 +14,7 @@ public class RecipeDBSchema {
             public static final String TITLE = "mTitle";
             public static final String INGREDIENTS = "mIngredient";
             public static final String STEPS = "mSteps";
-            public static final Boolean ISFAVOURITE = Boolean.valueOf("isFavourite");
+            public static final int ISFAVOURITE = 0;
         }
     }
 }

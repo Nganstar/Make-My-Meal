@@ -23,7 +23,7 @@ import java.util.List;
 
 public class AllRecipesFragment extends Fragment {
     private RecyclerView mCardListRecyclerView;
-    private CardAdapter mAdapter;
+    private RecipeAdapter mAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -90,7 +90,7 @@ public class AllRecipesFragment extends Fragment {
         List<Recipe> mRecipeList = recipeBook.getRecipeBook();
 
         if (mAdapter == null) {
-            mAdapter = new CardAdapter(mRecipeList);
+            mAdapter = new RecipeAdapter(mRecipeList);
             mCardListRecyclerView.setAdapter(mAdapter);
         } else {
             mAdapter.setRecipeList(mRecipeList);
@@ -98,25 +98,25 @@ public class AllRecipesFragment extends Fragment {
         }
     }
 
-    private class CardHolder extends RecyclerView.ViewHolder
+    private class RecipeHolder extends RecyclerView.ViewHolder
             implements View.OnClickListener {
 
         private Recipe mRecipe;
 
-        private TextView mQuestionTextView;
+        private TextView mRecipeTextView;
         private ImageView mImageView;
 
-        public CardHolder(LayoutInflater inflater, ViewGroup parent) {
+        public RecipeHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.recipe_list, parent, false));
             itemView.setOnClickListener(this);
 
-            mQuestionTextView = (TextView) itemView.findViewById(R.id.question_text_view);
+            mRecipeTextView = (TextView) itemView.findViewById(R.id.question_text_view);
             mImageView = (ImageView) itemView.findViewById(R.id.image_view);
         }
 
         public void bind(Recipe r) {
             mRecipe = r;
-            mQuestionTextView.setText(mRecipe.getTitle());
+            mRecipeTextView.setText(mRecipe.getTitle());
             Resources res = getResources();
             int resourceId = res.getIdentifier(mRecipe.getImage(),"drawable",getActivity().getPackageName());
             mImageView.setImageResource(resourceId);
@@ -130,21 +130,21 @@ public class AllRecipesFragment extends Fragment {
         }
     }
 
-    private class CardAdapter extends RecyclerView.Adapter<CardHolder> {
+    private class RecipeAdapter extends RecyclerView.Adapter<RecipeHolder> {
         private List<Recipe> mRecipeList;
 
-        public CardAdapter(List<Recipe> cardList) {
+        public RecipeAdapter(List<Recipe> cardList) {
             mRecipeList = cardList;
         }
 
         @Override
-        public CardHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public RecipeHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
-            return new CardHolder(layoutInflater, parent);
+            return new RecipeHolder(layoutInflater, parent);
         }
 
         @Override
-        public void onBindViewHolder(CardHolder holder, int position) {
+        public void onBindViewHolder(RecipeHolder holder, int position) {
             Recipe card = mRecipeList.get(position);
             holder.bind(card);
         }
