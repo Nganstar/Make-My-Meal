@@ -15,7 +15,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends SingleFragmentActivity {
     private static final String EXTRA_ARTICLE_ID =
             "example.com.sabr4730_a5";
     /**
@@ -84,6 +84,12 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(packageContext, MainActivity.class);
         intent.putExtra(EXTRA_ARTICLE_ID, articleId);
         return intent;
+    }
+    @Override
+    protected Fragment createFragment() {
+        String cardId = (String) getIntent()
+                .getSerializableExtra(EXTRA_ARTICLE_ID);
+        return RecipeDetailsFragment.newInstance(cardId);
     }
 
     /**

@@ -27,7 +27,7 @@ public class Recipe{
 
     public Recipe(){};
 
-    public Recipe(String id) {}
+    public Recipe(String mId) {this.mId = mId;}
 
     //methods
 

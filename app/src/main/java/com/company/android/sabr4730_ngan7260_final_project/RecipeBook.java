@@ -121,6 +121,7 @@ public class RecipeBook {
         return new RecipeCursorWrapper(cursor);
     }
 
+
     private static ContentValues getContentValues(Recipe r) {
         ContentValues values = new ContentValues();
         values.put(RecipeDBSchema.RecipeTable.Cols.MID, r.getId());
@@ -145,16 +146,16 @@ public class RecipeBook {
 
     void initialize(){
 
-//        //initializes database
-//        Recipe r = new Recipe("profile", "What is your name?", "Akhmad Sabri");
-//        addRecipe(r);
-//
-//        r = new Recipe("laurier_logo", "What do you do?", "I am a student");
-//        addRecipe(r);
-//
-//        r = new Recipe("indonesia1", "Where are you from?", "Indonesia");
-//        addRecipe(r);
-//
+        //initializes database
+        Recipe r = new Recipe("fried_chicken", "fried chicken", "yummy", "figure it out");
+        addRecipe(r);
+
+        r = new Recipe("pad_thai", "pad thai", "oh yeah","figure it out");
+        addRecipe(r);
+
+        r = new Recipe("shrimp_fried_rice", "shrimp fried yes", "give me sooome","figure it out");
+        addRecipe(r);
+
 //        r = new Recipe("soccer", "What is your favourite sport?", "Soccer");
 //        addRecipe(r);
     }
