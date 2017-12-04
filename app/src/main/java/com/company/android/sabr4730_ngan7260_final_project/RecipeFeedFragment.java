@@ -185,7 +185,7 @@ public class RecipeFeedFragment extends Fragment{
                             recipe.setImage(image);
                             //recipe.setIngredients(ingredients);
                             //recipe.setSteps(directions);
-                            recipe.setFavorite("0");
+                            recipe.setFavourite(false);
                             //recipe.setLink(getValue("link", currentElement));
 
                             Log.d("check", "runned "+recipe.getIngredients());
