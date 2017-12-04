@@ -4,7 +4,6 @@ package com.company.android.sabr4730_ngan7260_final_project;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,7 @@ import android.widget.TextView;
  */
 
 public class RecipeDetailsFragment extends Fragment {
-    private static final String CARD_ID = "the_card_id";
+    private static final String THE_RECIPE_ID = "the_recipe_id";
 
     private Recipe mRecipe;
     private TextView mTitle;
@@ -28,7 +27,7 @@ public class RecipeDetailsFragment extends Fragment {
 
     public static RecipeDetailsFragment newInstance(String cardId) {
         Bundle args = new Bundle();
-        args.putSerializable(CARD_ID, cardId);
+        args.putSerializable(THE_RECIPE_ID, cardId);
 
         RecipeDetailsFragment fragment = new RecipeDetailsFragment();
         fragment.setArguments(args);
@@ -38,7 +37,7 @@ public class RecipeDetailsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String recipeId = (String) getArguments().getSerializable(CARD_ID);
+        String recipeId = (String) getArguments().getSerializable(THE_RECIPE_ID);
         //Log.d("check","error: "+ recipeId);
         mRecipe = RecipeBook.get(getActivity()).getRecipe(recipeId);
     }
