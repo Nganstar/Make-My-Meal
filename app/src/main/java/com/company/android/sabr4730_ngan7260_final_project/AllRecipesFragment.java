@@ -26,9 +26,11 @@ public class AllRecipesFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private RecipeAdapter mAdapter;
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setHasOptionsMenu(true);
     }
     @Override
@@ -114,6 +116,8 @@ public class AllRecipesFragment extends Fragment {
         private ImageView mImageView;
 
         public RecipeHolder(LayoutInflater inflater, ViewGroup parent) {
+            //
+
             super(inflater.inflate(R.layout.recipe_list, parent, false));
             itemView.setOnClickListener(this);
 

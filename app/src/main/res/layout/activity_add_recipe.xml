@@ -7,129 +7,156 @@
     android:layout_height="match_parent"
     tools:layout_editor_absoluteY="81dp">
 
-    <EditText
-        android:id="@+id/title_edit_text"
-        android:layout_width="269dp"
-        android:layout_height="45dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/title_text_view"
-        app:layout_constraintTop_toBottomOf="@+id/image_text_edit"/>
-
-    <TextView
-        android:id="@+id/title_text_view"
+    <LinearLayout
+        android:id="@+id/linearSteps"
         android:layout_width="0dp"
-        android:layout_height="28dp"
-        android:layout_marginBottom="8dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="160dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:text="Enter Title"
-        app:layout_constraintBottom_toTopOf="@+id/steps_edit_text"
-        app:layout_constraintEnd_toStartOf="@+id/title_edit_text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_text_view"
-        app:layout_constraintVertical_bias="0.0"/>
-
-    <EditText
-        android:id="@+id/ingredients_edit_text"
-        android:layout_width="0dp"
-        android:layout_height="162dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        app:layout_constraintBottom_toTopOf="@+id/add_receipe_button"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.423"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ingredients_text_view"/>
+        app:layout_constraintTop_toBottomOf="@+id/linearImage"
+        >
 
-    <TextView
-        android:id="@+id/ingredients_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Enter Ingredients"
-        app:layout_constraintBottom_toTopOf="@+id/ingredients_edit_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.441"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/steps_edit_text"/>
+        <Button
+            android:id="@+id/enter_steps_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:text="Enter Steps"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="322dp"/>
 
-    <EditText
-        android:id="@+id/steps_edit_text"
-        android:layout_width="0dp"
-        android:layout_height="167dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:ems="10"
-        app:layout_constraintBottom_toTopOf="@+id/ingredients_text_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.42"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/steps_text_view"/>
+        <EditText
+            android:id="@+id/steps_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="380dp"/>
 
-    <TextView
-        android:id="@+id/steps_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Enter Steps"
-        app:layout_constraintBottom_toTopOf="@+id/steps_edit_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.447"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_text_view"/>
+    </LinearLayout>
 
     <Button
         android:id="@+id/add_receipe_button"
         android:layout_width="0dp"
         android:layout_height="46dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:onClick="AddRecipe"
         android:text="Add Recipe"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.447"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ingredients_edit_text"/>
+        app:layout_constraintTop_toBottomOf="@+id/linearSteps"
+        />
 
-    <EditText
-        android:id="@+id/image_text_edit"
-        android:layout_width="269dp"
-        android:layout_height="45dp"
+    <LinearLayout
+        android:id="@+id/linearImage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="236dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="textPersonName"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/linearSteps"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.714"
-        app:layout_constraintStart_toEndOf="@+id/image_text_view"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/image_text_view"
+        <Button
+            android:id="@+id/enter_image_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="false"
+            android:text="Enter Image"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="248dp"/>
+
+        <EditText
+            android:id="@+id/image_text_edit"
+            android:layout_width="269dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+
+            android:ems="10"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="134dp"
+            tools:layout_editor_absoluteY="248dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearTitle"
         android:layout_width="0dp"
-        android:layout_height="25dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:text="Enter image"
-        app:layout_constraintEnd_toStartOf="@+id/image_text_edit"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/linearImage">
+
+        <Button
+            android:id="@+id/enter_title_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="false"
+            android:text="Enter Title"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="65dp"/>
+
+        <EditText
+            android:id="@+id/title_edit_text"
+            android:layout_width="269dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="187dp"
+            tools:layout_editor_absoluteY="88dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearIngredients"
+        android:layout_width="0dp"
+        android:layout_height="169dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/linearSteps"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearTitle"
+        app:layout_constraintVertical_bias="0.154">
+
+        <Button
+            android:id="@+id/enter_ingredients_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:text="Enter Ingredients"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="246dp"/>
+
+        <EditText
+            android:id="@+id/ingredients_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="486dp"/>
+
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>
