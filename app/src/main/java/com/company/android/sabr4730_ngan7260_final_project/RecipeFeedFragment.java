@@ -48,7 +48,7 @@ public class RecipeFeedFragment extends Fragment{
     public static String location ="";
     private static int check =0;
 
-    String baseURL="http://makemymeal.000webhostapp.com/bens.xml";
+    String baseURL="https://www.finedininglovers.com/rss/recipes/latest";
     String url;
 
     @Override
@@ -70,13 +70,12 @@ public class RecipeFeedFragment extends Fragment{
             sb.append(baseURL);
 
             url = sb.toString();
-            if(check==0) {
-                check=check+1;
+
                 Log.d("check2", "Download"+check);
 
                 new DownloadWebpageTask().execute();
 
-            }
+
 
         }
         mRecyclerView = (RecyclerView) view
@@ -170,23 +169,26 @@ public class RecipeFeedFragment extends Fragment{
 
                     element.normalize();
                     NodeList nList = doc.getElementsByTagName("item");
+                    Log.d("checklist","error: "+ nList);
                     for (int i=0; i<nList.getLength(); i++) {
                         Node node = nList.item(i);
+                        Log.d("checknode","error: "+ node);
                         if (node.getNodeType() == Node.ELEMENT_NODE) {
                             Element currentElement = (Element) node;
                             String[] descritpionList=location.split("<description>");
-
                             String des= descritpionList[i+2].substring(0,descritpionList[i+2].indexOf("</description>"));
+                            String image= des.substring(des.indexOf("<img align=\"left\" hspace=\"5\" src=\"")+34,des.indexOf("\" alt=\""));
+                            String title= des.substring(des.indexOf(">")+1,des.indexOf("]]>"));
 
-                            String title =des.substring(des.indexOf("<p>")+3,des.indexOf("</p>"));
-                            String image= des.substring(des.indexOf("<img src='")+10,des.indexOf("' alt"));
-                            Log.d("check","error" + getValue("link", currentElement));
                             Recipe recipe= new Recipe();
                             recipe.setTitle(title);
                             recipe.setImage(image);
+                            //recipe.setIngredients(ingredients);
+                            //recipe.setSteps(directions);
+                            recipe.setFavorite("0");
                             //recipe.setLink(getValue("link", currentElement));
 
-                            Log.d("check2", "runned"+i);
+                            Log.d("check", "runned "+recipe.getIngredients());
                             mArticleList.add(recipe);
                         }
                     }
@@ -235,7 +237,7 @@ public class RecipeFeedFragment extends Fragment{
     private class ArticleHolder extends RecyclerView.ViewHolder
             implements View.OnClickListener {
 
-        private Recipe mArticle;
+        private Recipe mRecipe;
 
         private TextView mTitleTextView;
         private ImageView mImageView;
@@ -244,17 +246,17 @@ public class RecipeFeedFragment extends Fragment{
             super(inflater.inflate(R.layout.recipe_list, parent, false));
             itemView.setOnClickListener(this);
 
-            mTitleTextView = (TextView) itemView.findViewById(R.id.title_text_view);
+            mTitleTextView = (TextView) itemView.findViewById(R.id.question_text_view);
             mImageView = (ImageView) itemView.findViewById(R.id.image_view);
         }
 
         public void bind(Recipe article) {
-            mArticle = article;
-            mTitleTextView.setText(mArticle.getTitle());
+            mRecipe = article;
+            mTitleTextView.setText(mRecipe.getTitle());
 
-            if (mArticle.getImage() != null){
+            if (mRecipe.getImage() != null){
                 Picasso.with(getActivity().getApplicationContext())
-                        .load(mArticle.getImage())
+                        .load(mRecipe.getImage())
                         .error(R.drawable.profile)
                         .into(mImageView);
             }
@@ -262,7 +264,7 @@ public class RecipeFeedFragment extends Fragment{
 
         @Override
         public void onClick(View view) {
-            Intent intent = DetailActivity.newIntent(getActivity(), mArticle.getImage());
+            Intent intent = DetailActivity.newIntent(getActivity(), mRecipe.getImage());
             startActivity(intent);
         }
     }

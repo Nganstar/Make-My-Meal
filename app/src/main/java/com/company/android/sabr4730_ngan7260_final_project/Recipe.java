@@ -25,7 +25,9 @@ public class Recipe{
         this.isFavourite = favourite;
     }
 
-    public Recipe(){};
+    public Recipe(){
+        this.mId=(UUID.randomUUID().toString());
+    };
 
     public Recipe(String mId) {this.mId = mId;}
 
