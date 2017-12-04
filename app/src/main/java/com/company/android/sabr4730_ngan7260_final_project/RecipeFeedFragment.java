@@ -186,9 +186,10 @@ public class RecipeFeedFragment extends Fragment{
                             //recipe.setIngredients(ingredients);
                             //recipe.setSteps(directions);
                             recipe.setFavourite(false);
+                            recipe.setURL(getValue("link",currentElement));
                             //recipe.setLink(getValue("link", currentElement));
 
-                            Log.d("check", "runned "+recipe.getIngredients());
+                            Log.d("check", "runned "+recipe.getURL());
                             mArticleList.add(recipe);
                         }
                     }
@@ -264,7 +265,12 @@ public class RecipeFeedFragment extends Fragment{
 
         @Override
         public void onClick(View view) {
-            Intent intent = DetailActivity.newIntent(getActivity(), mRecipe.getImage());
+            ArrayList<String> list = new ArrayList<>();
+            list.add(mRecipe.getImage());
+            list.add(mRecipe.getTitle());
+            list.add(mRecipe.getURL());
+
+            Intent intent = WebDetailActivity.newIntent(getActivity(), list);
             startActivity(intent);
         }
     }

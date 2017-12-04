@@ -15,6 +15,7 @@ public class Recipe{
     private String mSteps;
     //private String isFavourite;
     private Boolean isFavourite;
+    private String mURL;
 
     //constructors
     public Recipe(String image, String title,  String ingredients, String steps, String favourite) {
@@ -50,6 +51,9 @@ public class Recipe{
     public String getTitle() {
         return mTitle;
     }
+    public String getURL(){
+        return mURL;
+    }
 
 //    public String getFavourite() {
 //        return isFavourite;
@@ -81,5 +85,8 @@ public class Recipe{
     public void setFavourite(Boolean state) {
 
         isFavourite = state;
+    }
+    public void setURL(String URL){
+        mURL=URL;
     }
 }
