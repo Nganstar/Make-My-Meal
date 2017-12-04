@@ -1,14 +1,11 @@
 package com.company.android.sabr4730_ngan7260_final_project;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,7 +21,7 @@ import java.util.List;
  */
 
 public class FavouritesFragment extends Fragment{
-    private RecyclerView mCardListRecyclerView;
+    private RecyclerView mRecyclerView;
     private RecipeAdapter mAdapter;
 
     @Override
@@ -31,7 +29,12 @@ public class FavouritesFragment extends Fragment{
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
     }
+    @Override
+    public void onPause() { //ch 14
+        super.onPause();
 
+        updateUI();
+    }
     @Override
     public void onResume() {
         super.onResume();
@@ -41,60 +44,31 @@ public class FavouritesFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.recycler_view_article_list, container, false);
+        View view = inflater.inflate(R.layout.recycler_view_recipe_list, container, false);
 
-        mCardListRecyclerView = (RecyclerView) view
+        mRecyclerView = (RecyclerView) view
                 .findViewById(R.id.recipe_recycler_view);
-        mCardListRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        //remove interface from the assignment page
-        ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
-            @Override
-            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
-                return false;
-            }
-
-            @Override
-            public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
-                final int position = viewHolder.getAdapterPosition(); //get position which is swipe
-                if (swipeDir == ItemTouchHelper.LEFT) { //if swipe left
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext()); //alert for confirm to delete
-                    builder.setMessage("Are you sure to delete?"); //set message
-                    builder.setPositiveButton("REMOVE", new DialogInterface.OnClickListener() { //when click on DELETE
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            mAdapter.notifyItemRemoved(position); //item removed from recylcerview
-                            mAdapter.remove(position);
-                            return;
-                        }
-                    }).setNegativeButton("CANCEL", new DialogInterface.OnClickListener() { //not removing items if cancel is done
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            mAdapter.notifyItemRemoved(position + 1); //notifies the RecyclerView Adapter that data in adapter has been removed at a particular position.
-                            mAdapter.notifyItemRangeChanged(position, mAdapter.getItemCount()); //notifies the RecyclerView Adapter that positions of element in adapter has been changed from position(removed element index to end of list), please update it.
-                            return;
-                        }
-                    }).show(); //show alert dialog
-                }
-            }
-        };
-
-        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
-        itemTouchHelper.attachToRecyclerView(mCardListRecyclerView);
-        updateUI();
-
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         return view;
     }
 
     private void updateUI() {
         RecipeBook recipeBook = RecipeBook.get(getActivity());
-        List<Recipe> mRecipeList = recipeBook.getFavRecipes();
+        List<Recipe> mRecipeList = recipeBook.getRecipeBook();
+        List<Recipe> mFavouriteRecipeList = new ArrayList<>();
+        for(int i =0; i<mRecipeList.size(); i++){
+            if(mRecipeList.get(i).getFavourite() == true){
+                mFavouriteRecipeList.add(mRecipeList.get(i));
+            }
+        }
 
         if (mAdapter == null) {
-            mAdapter = new RecipeAdapter(mRecipeList);
-            mCardListRecyclerView.setAdapter(mAdapter);
+  //          mAdapter = new RecipeAdapter(mRecipeList);
+            mAdapter = new RecipeAdapter(mFavouriteRecipeList);
+            mRecyclerView.setAdapter(mAdapter);
         } else {
-            mAdapter.setRecipeList(mRecipeList);
+            //mAdapter.setRecipeList(mRecipeList);
+            mAdapter.setRecipeList(mFavouriteRecipeList);
             mAdapter.notifyDataSetChanged();
         }
     }
@@ -153,7 +127,7 @@ public class FavouritesFragment extends Fragment{
         }
 
         public void remove(int position){
-            RecipeBook.get(getActivity()).getmDatabase().execSQL("delete from " + "cards" + " where MID='" + (mRecipeList.get(position).getId()) + "'");
+            RecipeBook.get(getActivity()).getmDatabase().execSQL("delete from " + "Recipe" + " where MID='" + (mRecipeList.get(position).getId()) + "'");
             mRecipeList.remove(position);
         }
 

@@ -21,14 +21,15 @@ public class RecipeCursorWrapper extends CursorWrapper {
         String title = getString(getColumnIndex(RecipeDBSchema.RecipeTable.Cols.TITLE));
         String ingredients = getString(getColumnIndex(RecipeDBSchema.RecipeTable.Cols.INGREDIENTS));
         String steps = getString(getColumnIndex(RecipeDBSchema.RecipeTable.Cols.STEPS));
-        String isfavorite = getString(getColumnIndex(RecipeDBSchema.RecipeTable.Cols.ISFAVOURITE));
+        int isfavorite = getInt(getColumnIndex(RecipeDBSchema.RecipeTable.Cols.ISFAVOURITE));
 
         Recipe r = new Recipe(mid);
         r.setImage(image);
         r.setIngredients(ingredients);
         r.setTitle(title);
         r.setSteps(steps);
-        r.setFavorite(isfavorite);
+        //r.setFavourite(isfavorite);
+        r.setFavourite(isfavorite != 0);
 
         return r;
     }

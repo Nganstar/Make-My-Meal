@@ -43,31 +43,25 @@ public class RecipeBook {
         if(iCount==0){initialize();}
     }
 
-    public void setFavRecipes(Recipe r, String state){
-        //odd or remove recipe from favourite list
-        r.setFavorite(state);
-        if (state.equals("1")){myFavRecipes.add(r);}
-        else myFavRecipes.remove(getPosition(r));
-    }
-    public ArrayList<Recipe> getFavRecipes() {
-        SQLiteDatabase database = this.getmDatabase();
-        String fav="SELECT * FROM " + RecipeDBSchema.RecipeTable.NAME + " Where " + ISFAVOURITE + " = \"1\" ";
-        Cursor cursor = database.rawQuery(fav, null);
-        ArrayList<Recipe> recipeList = new ArrayList<>();
-        if (cursor.getCount() > 0) {
-            for (int i = 0; i < cursor.getCount(); i++) {
-                cursor.moveToNext();
-                Recipe recipe = new Recipe(cursor.getString(1));
-                recipe.setImage(cursor.getString(2));
-                recipe.setTitle(cursor.getString(3));
-                recipe.setIngredients(cursor.getString(4));
-                recipe.setSteps(cursor.getString(5));
-                recipe.setFavorite(cursor.getString(6));
-                recipeList.add(recipe);
-            }
-        }
-        return recipeList;
-    }
+//    public ArrayList<Recipe> getFavRecipes() {
+//        SQLiteDatabase database = this.getmDatabase();
+//        String fav="SELECT * FROM " + RecipeDBSchema.RecipeTable.NAME + " Where " + ISFAVOURITE + " = \"1\" ";
+//        Cursor cursor = database.rawQuery(fav, null);
+//        ArrayList<Recipe> recipeList = new ArrayList<>();
+//        if (cursor.getCount() > 0) {
+//            for (int i = 0; i < cursor.getCount(); i++) {
+//                cursor.moveToNext();
+//                Recipe recipe = new Recipe(cursor.getString(1));
+//                recipe.setImage(cursor.getString(2));
+//                recipe.setTitle(cursor.getString(3));
+//                recipe.setIngredients(cursor.getString(4));
+//                recipe.setSteps(cursor.getString(5));
+//                recipe.setFavourite(cursor.getString(6));
+//                recipeList.add(recipe);
+//            }
+//        }
+//        return recipeList;
+//    }
 
 
 //        mContext = context.getApplicationContext();
@@ -162,7 +156,7 @@ public class RecipeBook {
         values.put(RecipeDBSchema.RecipeTable.Cols.TITLE, r.getTitle());
         values.put(RecipeDBSchema.RecipeTable.Cols.INGREDIENTS, r.getIngredients());
         values.put(RecipeDBSchema.RecipeTable.Cols.STEPS, r.getSteps());
-        values.put(String.valueOf(ISFAVOURITE), r.getFavourite());
+        values.put(RecipeDBSchema.RecipeTable.Cols.ISFAVOURITE, r.getFavourite());
 
 
         return values;

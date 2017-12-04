@@ -4,11 +4,11 @@ package com.company.android.sabr4730_ngan7260_final_project;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,7 +17,7 @@ import android.widget.TextView;
  */
 
 public class RecipeDetailsFragment extends Fragment {
-    private static final String CARD_ID = "the_card_id";
+    private static final String THE_RECIPE_ID = "the_recipe_id";
 
     private Recipe mRecipe;
     private TextView mTitle;
@@ -26,9 +26,9 @@ public class RecipeDetailsFragment extends Fragment {
     private TextView mIngerients;
     private CheckBox isFavourite;
 
-    public static RecipeDetailsFragment newInstance(String cardId) {
+    public static RecipeDetailsFragment newInstance(String receipeID) {
         Bundle args = new Bundle();
-        args.putSerializable(CARD_ID, cardId);
+        args.putSerializable(THE_RECIPE_ID, receipeID);
 
         RecipeDetailsFragment fragment = new RecipeDetailsFragment();
         fragment.setArguments(args);
@@ -38,7 +38,7 @@ public class RecipeDetailsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String recipeId = (String) getArguments().getSerializable(CARD_ID);
+        String recipeId = (String) getArguments().getSerializable(THE_RECIPE_ID);
         //Log.d("check","error: "+ recipeId);
         mRecipe = RecipeBook.get(getActivity()).getRecipe(recipeId);
     }
@@ -50,6 +50,7 @@ public class RecipeDetailsFragment extends Fragment {
         RecipeBook.get(getActivity())
                 .updateRecipe(mRecipe);
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,11 +67,24 @@ public class RecipeDetailsFragment extends Fragment {
                 getActivity().getPackageName());
         mImage.setImageResource(resourceId);
 
+        isFavourite = (CheckBox)view.findViewById(R.id.favourite_checkBox);
+
+        isFavourite.setChecked(mRecipe.getFavourite());
+        isFavourite.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView,
+                                         boolean isChecked) {
+                mRecipe.setFavourite(isChecked);
+
+            }
+        });
 
         mSteps = (TextView) view.findViewById(R.id.steps_text_view);
         mSteps.setText(mRecipe.getSteps());
         mIngerients=(TextView) view.findViewById(R.id.detail_ingredients_text_view);
         mIngerients.setText(mRecipe.getIngredients());
+        RecipeBook.get(getActivity())
+                .updateRecipe(mRecipe);
 
         return view;
     }
