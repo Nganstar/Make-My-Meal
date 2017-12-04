@@ -45,11 +45,14 @@ public class FavouritesFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.recycler_view_recipe_list, container, false);
-
+        return view;
+    }
+    public void onViewCreated(View view, Bundle savedInstanceState) {
         mRecyclerView = (RecyclerView) view
                 .findViewById(R.id.recipe_recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        return view;
+        mRecyclerView.setAdapter(mAdapter);
+        updateUI();
     }
 
     private void updateUI() {
