@@ -9,6 +9,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -125,6 +126,7 @@ public class AllRecipesFragment extends Fragment {
 
         @Override
         public void onClick(View view) {
+            Log.d("check","error: "+ mRecipe.getId());
             Intent intent = DetailActivity.newIntent(getActivity(), mRecipe.getId());
             startActivity(intent);
         }

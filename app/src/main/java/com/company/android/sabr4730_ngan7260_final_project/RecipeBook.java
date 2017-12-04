@@ -12,6 +12,8 @@ import com.company.android.sabr4730_ngan7260_final_project.database.RecipeDBSche
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.company.android.sabr4730_ngan7260_final_project.database.RecipeDBSchema.RecipeTable.Cols.ISFAVOURITE;
+
 /**
  * Created by akhma on 2017-11-23.
  */
@@ -41,25 +43,26 @@ public class RecipeBook {
         if(iCount==0){initialize();}
     }
 
-    public void setFavRecipes(Recipe r, int state){
+    public void setFavRecipes(Recipe r, String state){
         //odd or remove recipe from favourite list
         r.setFavorite(state);
-        if (state == 1){myFavRecipes.add(r);}
+        if (state.equals("1")){myFavRecipes.add(r);}
         else myFavRecipes.remove(getPosition(r));
     }
     public ArrayList<Recipe> getFavRecipes() {
         SQLiteDatabase database = this.getmDatabase();
-        Cursor cursor = database.rawQuery("SELECT * FROM Recipe Where ISFAVOURITE = 1", null);
+        String fav="SELECT * FROM " + RecipeDBSchema.RecipeTable.NAME + " Where " + ISFAVOURITE + " = \"1\" ";
+        Cursor cursor = database.rawQuery(fav, null);
         ArrayList<Recipe> recipeList = new ArrayList<>();
         if (cursor.getCount() > 0) {
             for (int i = 0; i < cursor.getCount(); i++) {
                 cursor.moveToNext();
-                Recipe recipe = new Recipe();
-                recipe.setImage(cursor.getString(1));
-                recipe.setTitle(cursor.getString(2));
-                recipe.setIngredients(cursor.getString(3));
-                recipe.setSteps(cursor.getString(4));
-                recipe.setFavorite(cursor.getInt(5));
+                Recipe recipe = new Recipe(cursor.getString(1));
+                recipe.setImage(cursor.getString(2));
+                recipe.setTitle(cursor.getString(3));
+                recipe.setIngredients(cursor.getString(4));
+                recipe.setSteps(cursor.getString(5));
+                recipe.setFavorite(cursor.getString(6));
                 recipeList.add(recipe);
             }
         }
@@ -159,7 +162,7 @@ public class RecipeBook {
         values.put(RecipeDBSchema.RecipeTable.Cols.TITLE, r.getTitle());
         values.put(RecipeDBSchema.RecipeTable.Cols.INGREDIENTS, r.getIngredients());
         values.put(RecipeDBSchema.RecipeTable.Cols.STEPS, r.getSteps());
-        values.put(String.valueOf(RecipeDBSchema.RecipeTable.Cols.ISFAVOURITE), r.getFavourite());
+        values.put(String.valueOf(ISFAVOURITE), r.getFavourite());
 
 
         return values;
@@ -201,7 +204,7 @@ public class RecipeBook {
                         "    Add garlic and onion to the skillet, and cook, stirring often, until onions have become translucent, about 3-4 minutes. Stir in carrots, corn and peas, and cook, stirring constantly, until vegetables are tender, about 3-4 minutes.\n" +
                         "    Stir in rice, green onions and soy sauce mixture. Cook, stirring constantly, until heated through, about 2 minutes. Stir in shrimp.\n" +
                         "    Serve immediately.\n" +
-                        "\n");
+                        "\n","0");
         addRecipe(r);
 
         r = new Recipe("garlic_sesame_noodle", "GARLIC SESAME NOODLE",
@@ -235,7 +238,7 @@ public class RecipeBook {
                         "    Stir in bell pepper and carrot to the skillet. Cook, stirring frequently, until tender, about 3-4 minutes.\n" +
                         "    Stir in Yaki-Soba, broccoli and soy sauce mixture until broccoli is tender and the sauce is slightly thickened, about 3-4 minutes.\n" +
                         "    Serve immediately, garnished with green onion and sesame seeds, if desired.\n" +
-                        "\n" );
+                        "\n","1");
         addRecipe(r);
         r = new Recipe("sheet_pan_teriyaki_salmon", "SHEET PAN TERIYAKI SALMON",
                 "\n" +
@@ -259,7 +262,7 @@ public class RecipeBook {
                         "    Drizzle green beans and carrots with olive oil; season with salt and pepper, to taste.\n" +
                         "    Place into oven and cook until the fish flakes easily with a fork, about 16-18 minutes.*\n" +
                         "    Serve immediately, garnished with green onions and sesame seeds, if desired.\n" +
-                        "\n");
+                        "\n","0");
         addRecipe(r);
 
         r = new Recipe("one_pot_nacho_beef_skillet", "ONE POT NACHO BEEF SKILLET",
@@ -293,7 +296,7 @@ public class RecipeBook {
                         "    Stir in red peppers until heated through, about 1 minute.\n" +
                         "    Remove from heat and top with cheeses. Cover until cheeses have melted, about 2 minutes.\n" +
                         "    Serve immediately, garnished with tortilla chips, tomato and cilantro, if desired.\n" +
-                        "\n");
+                        "\n","1");
         addRecipe(r);
 
 //        r = new Recipe("soccer", "What is your favourite sport?", "Soccer");

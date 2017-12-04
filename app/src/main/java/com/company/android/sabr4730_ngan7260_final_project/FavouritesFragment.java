@@ -9,6 +9,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -125,6 +126,7 @@ public class FavouritesFragment extends Fragment{
 
         @Override
         public void onClick(View view) {
+            Log.d("check","error: "+ mRecipe.getId());
             Intent intent = DetailActivity.newIntent(getActivity(), mRecipe.getId());
             startActivity(intent);
         }
@@ -145,6 +147,7 @@ public class FavouritesFragment extends Fragment{
 
         @Override
         public void onBindViewHolder(RecipeHolder holder, int position) {
+            Log.d("check","error: "+ mRecipeList.get(position));
             Recipe card = mRecipeList.get(position);
             holder.bind(card);
         }
@@ -159,8 +162,8 @@ public class FavouritesFragment extends Fragment{
             return mRecipeList.size();
         }
 
-        public void setRecipeList(List<Recipe> cards) {
-            mRecipeList = cards;
+        public void setRecipeList(List<Recipe> recipe) {
+            mRecipeList = recipe;
         }
     }
 

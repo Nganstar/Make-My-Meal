@@ -39,7 +39,7 @@ public class RecipeDetailsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         String recipeId = (String) getArguments().getSerializable(CARD_ID);
-        Log.d("check","error: "+ recipeId);
+        //Log.d("check","error: "+ recipeId);
         mRecipe = RecipeBook.get(getActivity()).getRecipe(recipeId);
     }
 
@@ -55,7 +55,7 @@ public class RecipeDetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.recipe_details_fragment, container, false);
-        Log.d("check","error: "+ mRecipe.getImage());
+
         mTitle = (TextView) view.findViewById(R.id.title_text_view);
         mTitle.setText(mRecipe.getTitle());
         mImage =(ImageView)view.findViewById(R.id.detail_image_view);

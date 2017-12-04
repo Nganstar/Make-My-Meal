@@ -21,7 +21,7 @@ public class RecipeCursorWrapper extends CursorWrapper {
         String title = getString(getColumnIndex(RecipeDBSchema.RecipeTable.Cols.TITLE));
         String ingredients = getString(getColumnIndex(RecipeDBSchema.RecipeTable.Cols.INGREDIENTS));
         String steps = getString(getColumnIndex(RecipeDBSchema.RecipeTable.Cols.STEPS));
-        int isfavorite = getInt((RecipeDBSchema.RecipeTable.Cols.ISFAVOURITE));
+        String isfavorite = getString(getColumnIndex(RecipeDBSchema.RecipeTable.Cols.ISFAVOURITE));
 
         Recipe r = new Recipe(mid);
         r.setImage(image);

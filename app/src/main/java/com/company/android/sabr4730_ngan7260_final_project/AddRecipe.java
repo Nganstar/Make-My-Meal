@@ -34,7 +34,7 @@ public class AddRecipe extends AppCompatActivity {
         String stepsText = stepsEditText.getText().toString();
 
         //create card
-        Recipe r = new Recipe(imageText, titleText, ingredientsText, stepsText);
+        Recipe r = new Recipe(imageText, titleText, ingredientsText, stepsText,"0");
         RecipeBook.get(this).addRecipe(r);
 
         //make toast to indicate that card has been added
