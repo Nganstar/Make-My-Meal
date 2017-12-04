@@ -140,11 +140,13 @@ public class MainActivity extends AppCompatActivity {
                     AllRecipesFragment allRecipes = new AllRecipesFragment();
                     return allRecipes;
                 case 1:
+
+                RecipeFeedFragment rss =new RecipeFeedFragment();
+                return rss;
+                case 2:
                     FavouritesFragment favourites=new FavouritesFragment();
                     return favourites;
-                case 2:
-                    RecipeFeedFragment rss =new RecipeFeedFragment();
-                    return rss;
+
 
                default:
                    return new AllRecipesFragment();

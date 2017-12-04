@@ -4,7 +4,7 @@
     <string name="scan_doc">scan_doc</string>
     <string name="all_recipes">all recipes</string>
     <string name="favourites">favourites</string>
-    <string name="online">online</string>
+    <string name="online">popular</string>
     <string name="show_more">Show More</string>
     <string name="cover_image">cover_image</string>
 </resources>
