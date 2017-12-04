@@ -55,8 +55,8 @@ public class RecipeDetailsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.recipe_details_fragment, container, false);
-
+        //View view = inflater.inflate(R.layout.recipe_details_fragment, container, false);
+        View view = inflater.inflate(R.layout.recipe_detail_fragment, container, false);
         mTitle = (TextView) view.findViewById(R.id.title_text_view);
         mTitle.setText(mRecipe.getTitle());
         mImage =(ImageView)view.findViewById(R.id.detail_image_view);

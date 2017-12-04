@@ -56,7 +56,7 @@ public class RecipeDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.recipe_details, container, false);
+        view = inflater.inflate(R.layout.recipe_feed_details, container, false);
 
         mTitleTextView = (TextView) view.findViewById(R.id.description_text_view);
         mTitleTextView.setText(mRecipe.getTitle());
