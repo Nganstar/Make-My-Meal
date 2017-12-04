@@ -19,7 +19,7 @@ public class AddRecipe extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_recipe);
     }
-    public void CreateCard(View view){
+    public void AddRecipe(View view){
 
         //extracts data from editTexts
         TextView imageEditText = (TextView) findViewById(R.id.image_text_edit);
@@ -33,7 +33,7 @@ public class AddRecipe extends AppCompatActivity {
         String ingredientsText = ingredientEditText.getText().toString();
         String stepsText = stepsEditText.getText().toString();
 
-        //create card
+        //create recipe
         Recipe r = new Recipe(imageText, titleText, ingredientsText, stepsText,"0");
         RecipeBook.get(this).addRecipe(r);
 
