@@ -11,19 +11,19 @@ import java.util.ArrayList;
  */
 
 public class WebDetailActivity extends SingleFragmentActivity{
-    private static final String EXTRA_ARTICLE_ID =
-            "example.com.sabr4730_a4";
+    private static final String EXTRA_RECIPE_ID =
+            "password";
 
     @Override
     protected Fragment createFragment() {
         ArrayList<String> list =  getIntent()
-                .getStringArrayListExtra(EXTRA_ARTICLE_ID);
-        return ArticleDetailFragment.newInstance(list);
+                .getStringArrayListExtra(EXTRA_RECIPE_ID);
+        return RecipeDetailFragment.newInstance(list);
     }
 
     public static Intent newIntent(Context packageContext, ArrayList<String> list) {
         Intent intent = new Intent(packageContext, WebDetailActivity.class);
-        intent.putExtra(EXTRA_ARTICLE_ID, list);
+        intent.putExtra(EXTRA_RECIPE_ID, list);
         return intent;
     }
 }

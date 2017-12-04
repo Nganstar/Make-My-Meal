@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/new_card"
+        android:id="@+id/new_recipe"
         android:icon="@drawable/ic_add_recipe"
         android:title="@string/add_recipe"
         app:showAsAction="ifRoom|withText"/>

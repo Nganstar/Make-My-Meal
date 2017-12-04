@@ -21,23 +21,23 @@ import java.util.ArrayList;
  * Created by akhma on 2017-11-17.
  */
 
-public class ArticleDetailFragment extends Fragment {
-    private static final String ARTICLE_ID = "articleID";
+public class RecipeDetailFragment extends Fragment {
+    private static final String RECIPE_ID = "recipeID";
     public static final String EXTRA_MESSAGE = "link";
 
 
-    private Recipe mArticle;
+    private Recipe mRecipe;
     private TextView mTitleTextView;
     private ImageView mImageView;
     private Button mLinkButton;
     public View view;
 
-    public static ArticleDetailFragment newInstance(ArrayList<String> list) {
+    public static RecipeDetailFragment newInstance(ArrayList<String> list) {
 
         Bundle args = new Bundle();
-        args.putStringArrayList(ARTICLE_ID, list);
+        args.putStringArrayList(RECIPE_ID, list);
         Log.d("new","ARG: "+ list);
-        ArticleDetailFragment fragment = new ArticleDetailFragment();
+        RecipeDetailFragment fragment = new RecipeDetailFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -47,25 +47,24 @@ public class ArticleDetailFragment extends Fragment {
 
         super.onCreate(savedInstanceState);
 
-        ArrayList<String> list =  getArguments().getStringArrayList(ARTICLE_ID);
+        ArrayList<String> list =  getArguments().getStringArrayList(RECIPE_ID);
         Log.d("new","ARG: "+ list.get(0));
-        mArticle = new Recipe(list.get(0),list.get(1),"food","food","0");
-        mArticle.setURL(list.get(2));
-        //mArticle = RecipeBook.getWeb(getActivity()).getArticle(articleId);
+        mRecipe = new Recipe(list.get(0),list.get(1),"food","food","0");
+        mRecipe.setURL(list.get(2));
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.article_details, container, false);
+        view = inflater.inflate(R.layout.recipe_details, container, false);
 
         mTitleTextView = (TextView) view.findViewById(R.id.description_text_view);
-        mTitleTextView.setText(mArticle.getTitle());
+        mTitleTextView.setText(mRecipe.getTitle());
 
         Resources res = getResources();
-        if (mArticle.getImage() != null) {
-            int resourceId = res.getIdentifier(mArticle.getImage(), "drawable", getActivity().getPackageName());
-            ImageView image = (ImageView) view.findViewById(R.id.article_image_view);
+        if (mRecipe.getImage() != null) {
+            int resourceId = res.getIdentifier(mRecipe.getImage(), "drawable", getActivity().getPackageName());
+            ImageView image = (ImageView) view.findViewById(R.id.recipe_image_view);
             image.setImageResource(resourceId);
         }
 
@@ -74,16 +73,16 @@ public class ArticleDetailFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), WebViewActivity.class);
-                String message = mArticle.getURL();
+                String message = mRecipe.getURL();
                 intent.putExtra(EXTRA_MESSAGE, message);
                 startActivity(intent);
             }
         });
 
-        mImageView = (ImageView) view.findViewById(R.id.article_image_view);
+        mImageView = (ImageView) view.findViewById(R.id.recipe_image_view);
 
         Picasso.with(getActivity().getApplicationContext())
-                .load(mArticle.getImage())
+                .load(mRecipe.getImage())
                 .error(R.drawable.profile)
                 .into(mImageView);
 

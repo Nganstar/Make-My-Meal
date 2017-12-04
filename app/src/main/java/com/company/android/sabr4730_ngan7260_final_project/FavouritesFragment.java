@@ -85,7 +85,7 @@ public class FavouritesFragment extends Fragment{
             super(inflater.inflate(R.layout.recipe_list, parent, false));
             itemView.setOnClickListener(this);
 
-            mRecipeTextView = (TextView) itemView.findViewById(R.id.question_text_view);
+            mRecipeTextView = (TextView) itemView.findViewById(R.id.description_text_view);
             mImageView = (ImageView) itemView.findViewById(R.id.image_view);
         }
 
@@ -109,8 +109,8 @@ public class FavouritesFragment extends Fragment{
     private class RecipeAdapter extends RecyclerView.Adapter<RecipeHolder> {
         private List<Recipe> mRecipeList;
 
-        public RecipeAdapter(List<Recipe> cardList) {
-            mRecipeList = cardList;
+        public RecipeAdapter(List<Recipe> recipeList) {
+            mRecipeList = recipeList;
         }
 
         @Override
@@ -122,8 +122,8 @@ public class FavouritesFragment extends Fragment{
         @Override
         public void onBindViewHolder(RecipeHolder holder, int position) {
             Log.d("check","error: "+ mRecipeList.get(position));
-            Recipe card = mRecipeList.get(position);
-            holder.bind(card);
+            Recipe r = mRecipeList.get(position);
+            holder.bind(r);
         }
 
         public void remove(int position){

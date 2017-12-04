@@ -121,7 +121,7 @@ public class AllRecipesFragment extends Fragment {
             super(inflater.inflate(R.layout.recipe_list, parent, false));
             itemView.setOnClickListener(this);
 
-            mRecipeTextView = (TextView) itemView.findViewById(R.id.question_text_view);
+            mRecipeTextView = (TextView) itemView.findViewById(R.id.description_text_view);
             mImageView = (ImageView) itemView.findViewById(R.id.image_view);
         }
 

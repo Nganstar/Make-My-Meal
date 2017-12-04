@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 public class AddRecipe extends AppCompatActivity {
 
-    public static final String CARD_PASSWORD = "Password";
+    public static final String RECIPE_PASSWORD = "Password";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,7 @@ public class AddRecipe extends AppCompatActivity {
         Recipe r = new Recipe(imageText, titleText, ingredientsText, stepsText,"0");
         RecipeBook.get(this).addRecipe(r);
 
-        //make toast to indicate that card has been added
+        //make toast to indicate that recipe has been added
         Toast.makeText(this, "Recipe has been added", Toast.LENGTH_SHORT).show();
 
     }

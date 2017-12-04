@@ -100,9 +100,7 @@ public class RecipeBook {
         }
         return sRecipeBook;
     }
-    public List<Recipe> getRecipeWebBook(){
-        return myRecipes;
-    }
+
     public List<Recipe> getRecipeBook() { //ch 8
         List<Recipe> recipeList = new ArrayList<>();
 
@@ -119,16 +117,7 @@ public class RecipeBook {
 
         return recipeList;
     }
-    public Recipe getArticle(String image){
-        for(Recipe recipe : myRecipes){
-            Log.d("check", "current: "+recipe.getId()+ image);
 
-            if(recipe.getImage().equals(image)){
-                return recipe;
-            }
-        }
-        return null;
-    }
     public Recipe getRecipe(String id) {
         RecipeCursorWrapper cursor = queryRecipe(
                 RecipeDBSchema.RecipeTable.Cols.MID + " = ?",

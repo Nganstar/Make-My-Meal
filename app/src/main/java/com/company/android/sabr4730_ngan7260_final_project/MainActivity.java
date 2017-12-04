@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) { // Handle item selection
         Intent intent;
         switch (item.getItemId()) {
-            case R.id.new_card: // Create the second activity to add a new card
+            case R.id.new_recipe: // Create the second activity to add a new recipe
                 intent = new Intent(this,AddRecipe.class);
                 startActivity(intent);
                 return true;

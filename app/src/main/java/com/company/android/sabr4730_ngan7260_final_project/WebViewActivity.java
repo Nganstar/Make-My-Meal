@@ -32,7 +32,7 @@ public class WebViewActivity extends AppCompatActivity {
         mProgressBar.setMax(100); // WebChromeClient reports in range 0-100
         titleTextView = (TextView) findViewById(R.id.titleTextView);
 
-        link = getIntent().getStringExtra(ArticleDetailFragment.EXTRA_MESSAGE);
+        link = getIntent().getStringExtra(RecipeDetailFragment.EXTRA_MESSAGE);
         setup();
     }
 

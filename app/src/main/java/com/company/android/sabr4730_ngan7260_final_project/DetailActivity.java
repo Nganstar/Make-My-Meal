@@ -9,18 +9,18 @@ import android.support.v4.app.Fragment;
  */
 
 public class DetailActivity extends SingleFragmentActivity{
-    private static final String EXTRA_ARTICLE_ID =
-            "example.com.sabr4730_a5";
+    private static final String EXTRA_RECIPE_ID =
+            "Password";
 
     public static Intent newIntent(Context packageContext, String articleId) {
         Intent intent = new Intent(packageContext, DetailActivity.class);
-        intent.putExtra(EXTRA_ARTICLE_ID, articleId);
+        intent.putExtra(EXTRA_RECIPE_ID, articleId);
         return intent;
     }
     @Override
     protected Fragment createFragment() {
         String cardId = (String) getIntent()
-                .getSerializableExtra(EXTRA_ARTICLE_ID);
+                .getSerializableExtra(EXTRA_RECIPE_ID);
         return RecipeDetailsFragment.newInstance(cardId);
     }
 }

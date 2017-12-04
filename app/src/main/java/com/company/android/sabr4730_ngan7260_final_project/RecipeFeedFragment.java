@@ -43,8 +43,8 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 public class RecipeFeedFragment extends Fragment{
     private RecyclerView mRecyclerView;
-    private ArticleAdapter mAdapter;
-    private static List<Recipe> mArticleList = new ArrayList<>();
+    private RecipeAdapter mAdapter;
+    private static List<Recipe> mRecipeList = new ArrayList<>();
     public static String location ="";
     private static int check =0;
 
@@ -190,7 +190,7 @@ public class RecipeFeedFragment extends Fragment{
                             //recipe.setLink(getValue("link", currentElement));
 
                             Log.d("check", "runned "+recipe.getURL());
-                            mArticleList.add(recipe);
+                            mRecipeList.add(recipe);
                         }
                     }
 
@@ -227,15 +227,15 @@ public class RecipeFeedFragment extends Fragment{
     private void updateUI() {
 
         if (mAdapter == null) {
-            mAdapter = new ArticleAdapter(mArticleList);
+            mAdapter = new RecipeAdapter(mRecipeList);
             mRecyclerView.setAdapter(mAdapter);
         } else {
-            mAdapter.setCardList(mArticleList);
+            mAdapter.setRecipeList(mRecipeList);
             mAdapter.notifyDataSetChanged();
         }
     }
 
-    private class ArticleHolder extends RecyclerView.ViewHolder
+    private class RecipeHolder extends RecyclerView.ViewHolder
             implements View.OnClickListener {
 
         private Recipe mRecipe;
@@ -243,16 +243,16 @@ public class RecipeFeedFragment extends Fragment{
         private TextView mTitleTextView;
         private ImageView mImageView;
 
-        public ArticleHolder(LayoutInflater inflater, ViewGroup parent) {
+        public RecipeHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.recipe_list, parent, false));
             itemView.setOnClickListener(this);
 
-            mTitleTextView = (TextView) itemView.findViewById(R.id.question_text_view);
+            mTitleTextView = (TextView) itemView.findViewById(R.id.description_text_view);
             mImageView = (ImageView) itemView.findViewById(R.id.image_view);
         }
 
-        public void bind(Recipe article) {
-            mRecipe = article;
+        public void bind(Recipe r) {
+            mRecipe = r;
             mTitleTextView.setText(mRecipe.getTitle());
 
             if (mRecipe.getImage() != null){
@@ -275,33 +275,33 @@ public class RecipeFeedFragment extends Fragment{
         }
     }
 
-    private class ArticleAdapter extends RecyclerView.Adapter<ArticleHolder> {
-        private List<Recipe> mArticleList;
+    private class RecipeAdapter extends RecyclerView.Adapter<RecipeHolder> {
+        private List<Recipe> mRecipeList;
 
-        public ArticleAdapter(List<Recipe> cardList) {
-            mArticleList = cardList;
+        public RecipeAdapter(List<Recipe> recipeList) {
+            mRecipeList = recipeList;
         }
 
         @Override
-        public ArticleHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public RecipeHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
-            return new ArticleHolder(layoutInflater, parent);
+            return new RecipeHolder(layoutInflater, parent);
         }
 
         @Override
-        public void onBindViewHolder(ArticleHolder holder, int position) {
-            Recipe recipe = mArticleList.get(position);
+        public void onBindViewHolder(RecipeHolder holder, int position) {
+            Recipe recipe = mRecipeList.get(position);
             holder.bind(recipe);
         }
 
 
         @Override
         public int getItemCount() {
-            return mArticleList.size();
+            return mRecipeList.size();
         }
 
-        public void setCardList(List<Recipe> articles) {
-            mArticleList = articles;
+        public void setRecipeList(List<Recipe> recipeList) {
+            mRecipeList = recipeList;
         }
     }
 }
