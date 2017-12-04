@@ -54,6 +54,16 @@ public class AllRecipesFragment extends Fragment {
 
 
 
+
+
+
+        return view;
+    }
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        mRecyclerView = (RecyclerView) view
+                .findViewById(R.id.recipe_recycler_view);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mRecyclerView.setAdapter(mAdapter);
         //remove interface from the assignment page
         ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
@@ -88,15 +98,6 @@ public class AllRecipesFragment extends Fragment {
 
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
         itemTouchHelper.attachToRecyclerView(mRecyclerView);
-
-
-        return view;
-    }
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        mRecyclerView = (RecyclerView) view
-                .findViewById(R.id.recipe_recycler_view);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mRecyclerView.setAdapter(mAdapter);
         updateUI();
     }
 
