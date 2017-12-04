@@ -23,13 +23,19 @@ import java.util.List;
  */
 
 public class AllRecipesFragment extends Fragment {
-    private RecyclerView mCardListRecyclerView;
+    private RecyclerView mRecyclerView;
     private RecipeAdapter mAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+    }
+    @Override
+    public void onPause() { //ch 14
+        super.onPause();
+
+        updateUI();
     }
 
     @Override
@@ -41,11 +47,11 @@ public class AllRecipesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.recycler_view_article_list, container, false);
+        View view = inflater.inflate(R.layout.recycler_view_recipe_list, container, false);
 
-        mCardListRecyclerView = (RecyclerView) view
+        mRecyclerView = (RecyclerView) view
                 .findViewById(R.id.recipe_recycler_view);
-        mCardListRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         //remove interface from the assignment page
         ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
@@ -80,7 +86,7 @@ public class AllRecipesFragment extends Fragment {
         };
 
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
-        itemTouchHelper.attachToRecyclerView(mCardListRecyclerView);
+        itemTouchHelper.attachToRecyclerView(mRecyclerView);
         updateUI();
 
         return view;
@@ -92,7 +98,7 @@ public class AllRecipesFragment extends Fragment {
 
         if (mAdapter == null) {
             mAdapter = new RecipeAdapter(mRecipeList);
-            mCardListRecyclerView.setAdapter(mAdapter);
+            mRecyclerView.setAdapter(mAdapter);
         } else {
             mAdapter.setRecipeList(mRecipeList);
             mAdapter.notifyDataSetChanged();
@@ -135,8 +141,8 @@ public class AllRecipesFragment extends Fragment {
     private class RecipeAdapter extends RecyclerView.Adapter<RecipeHolder> {
         private List<Recipe> mRecipeList;
 
-        public RecipeAdapter(List<Recipe> cardList) {
-            mRecipeList = cardList;
+        public RecipeAdapter(List<Recipe> recipeList) {
+            mRecipeList = recipeList;
         }
 
         @Override
@@ -147,12 +153,12 @@ public class AllRecipesFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(RecipeHolder holder, int position) {
-            Recipe card = mRecipeList.get(position);
-            holder.bind(card);
+            Recipe r = mRecipeList.get(position);
+            holder.bind(r);
         }
 
         public void remove(int position){
-            RecipeBook.get(getActivity()).getmDatabase().execSQL("delete from " + "cards" + " where MID='" + (mRecipeList.get(position).getId()) + "'");
+            RecipeBook.get(getActivity()).getmDatabase().execSQL("delete from " + "Recipe" + " where MID='" + (mRecipeList.get(position).getId()) + "'");
             mRecipeList.remove(position);
         }
 
@@ -161,8 +167,8 @@ public class AllRecipesFragment extends Fragment {
             return mRecipeList.size();
         }
 
-        public void setRecipeList(List<Recipe> cards) {
-            mRecipeList = cards;
+        public void setRecipeList(List<Recipe> recipeList) {
+            mRecipeList = recipeList;
         }
     }
 }

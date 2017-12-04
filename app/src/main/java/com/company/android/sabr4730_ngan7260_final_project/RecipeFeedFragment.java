@@ -63,7 +63,7 @@ public class RecipeFeedFragment extends Fragment{
                              Bundle savedInstanceState) {
         Log.d("check2", "onCreateView");
         RecipeBook.get(getActivity());
-        View view = inflater.inflate(R.layout.recycler_view_article_list, container, false);
+        View view = inflater.inflate(R.layout.recycler_view_recipe_list, container, false);
 
         if(checkNetwork()){
             StringBuilder sb = new StringBuilder();

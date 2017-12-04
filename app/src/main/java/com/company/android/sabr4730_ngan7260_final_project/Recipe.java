@@ -13,16 +13,18 @@ public class Recipe{
     private String mTitle;
     private String mIngredients;
     private String mSteps;
-    private String isFavourite;
+    //private String isFavourite;
+    private Boolean isFavourite;
 
     //constructors
     public Recipe(String image, String title,  String ingredients, String steps, String favourite) {
+    //public Recipe(String image, String title,  String ingredients, String steps) {
         this.mId=(UUID.randomUUID().toString());
         this.mImage = image;
         this.mTitle = title;
         this.mIngredients = ingredients;
         this.mSteps = steps;
-        this.isFavourite = favourite;
+        //this.isFavourite = favourite;
     }
 
     public Recipe(){};
@@ -47,7 +49,10 @@ public class Recipe{
         return mTitle;
     }
 
-    public String getFavourite() {
+//    public String getFavourite() {
+//        return isFavourite;
+//    }
+    public Boolean getFavourite() {
         return isFavourite;
     }
 
@@ -71,7 +76,8 @@ public class Recipe{
         mTitle = title;
     }
 
-    public void setFavorite(String state) {
+    public void setFavourite(Boolean state) {
+
         isFavourite = state;
     }
 }

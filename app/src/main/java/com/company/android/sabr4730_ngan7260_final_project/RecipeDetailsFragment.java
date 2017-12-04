@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,9 +26,9 @@ public class RecipeDetailsFragment extends Fragment {
     private TextView mIngerients;
     private CheckBox isFavourite;
 
-    public static RecipeDetailsFragment newInstance(String cardId) {
+    public static RecipeDetailsFragment newInstance(String receipeID) {
         Bundle args = new Bundle();
-        args.putSerializable(THE_RECIPE_ID, cardId);
+        args.putSerializable(THE_RECIPE_ID, receipeID);
 
         RecipeDetailsFragment fragment = new RecipeDetailsFragment();
         fragment.setArguments(args);
@@ -50,6 +51,7 @@ public class RecipeDetailsFragment extends Fragment {
                 .updateRecipe(mRecipe);
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -65,11 +67,24 @@ public class RecipeDetailsFragment extends Fragment {
                 getActivity().getPackageName());
         mImage.setImageResource(resourceId);
 
+        isFavourite = (CheckBox)view.findViewById(R.id.favourite_checkBox);
+
+        isFavourite.setChecked(mRecipe.getFavourite());
+        isFavourite.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView,
+                                         boolean isChecked) {
+                mRecipe.setFavourite(isChecked);
+
+            }
+        });
 
         mSteps = (TextView) view.findViewById(R.id.steps_text_view);
         mSteps.setText(mRecipe.getSteps());
         mIngerients=(TextView) view.findViewById(R.id.detail_ingredients_text_view);
         mIngerients.setText(mRecipe.getIngredients());
+        RecipeBook.get(getActivity())
+                .updateRecipe(mRecipe);
 
         return view;
     }
