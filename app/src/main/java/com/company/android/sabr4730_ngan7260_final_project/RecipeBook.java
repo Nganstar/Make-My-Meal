@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.company.android.sabr4730_ngan7260_final_project.database.RecipeBaseHelper;
 import com.company.android.sabr4730_ngan7260_final_project.database.RecipeCursorWrapper;
@@ -29,6 +30,9 @@ public class RecipeBook {
 
     private static SQLiteDatabase mDatabase; //ch14
 
+    private RecipeBook(Context context, int i){
+        myRecipes= new ArrayList<>();
+    }
     private RecipeBook(Context context) { //ch 8
 
         mContext = context.getApplicationContext();
@@ -90,7 +94,15 @@ public class RecipeBook {
         }
         return sRecipeBook;
     }
-
+    public static RecipeBook getWeb(Context context) { //ch 8
+        if (sRecipeBook == null) {
+            sRecipeBook = new RecipeBook(context,0);
+        }
+        return sRecipeBook;
+    }
+    public List<Recipe> getRecipeWebBook(){
+        return myRecipes;
+    }
     public List<Recipe> getRecipeBook() { //ch 8
         List<Recipe> recipeList = new ArrayList<>();
 
@@ -107,7 +119,16 @@ public class RecipeBook {
 
         return recipeList;
     }
+    public Recipe getArticle(String image){
+        for(Recipe recipe : myRecipes){
+            Log.d("check", "current: "+recipe.getId()+ image);
 
+            if(recipe.getImage().equals(image)){
+                return recipe;
+            }
+        }
+        return null;
+    }
     public Recipe getRecipe(String id) {
         RecipeCursorWrapper cursor = queryRecipe(
                 RecipeDBSchema.RecipeTable.Cols.MID + " = ?",

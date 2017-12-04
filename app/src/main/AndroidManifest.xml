@@ -28,6 +28,10 @@
                   android:parentActivityName="com.company.android.sabr4730_ngan7260_final_project.MainActivity"></activity>
         <activity android:name=".DetailActivity"
             android:parentActivityName=".MainActivity"></activity>
+        <activity android:name=".WebViewActivity"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity android:name=".WebDetailActivity"
+            android:parentActivityName=".MainActivity"></activity>
     </application>
 
 </manifest>
