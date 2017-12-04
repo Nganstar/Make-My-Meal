@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.SurfaceView;
 import android.widget.TextView;
 import com.google.android.gms.vision.CameraSource;
+import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.text.TextRecognizer;
 import android.util.SparseArray;
 import android.view.SurfaceHolder;
@@ -18,7 +19,8 @@ import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.text.TextBlock;
 
 import java.io.IOException;
-
+//credit to tutorial from devexchanges.info
+//open camera and display text to the text into the screen
 public class ScanDoc extends AppCompatActivity {
 
     private SurfaceView cameraView;
@@ -34,6 +36,7 @@ public class ScanDoc extends AppCompatActivity {
         barcodeValue = (TextView) findViewById(R.id.text_value);
 
         TextRecognizer textRecognizer = new TextRecognizer.Builder(getApplicationContext()).build();
+
         textRecognizer.setProcessor(new Detector.Processor<TextBlock>() {
             @Override
             public void release() {
@@ -42,7 +45,7 @@ public class ScanDoc extends AppCompatActivity {
 
             @Override
             public void receiveDetections(Detector.Detections<TextBlock> detections) {
-                Log.d("Main", "receiveDetections");
+                //Log.d("Main", "receiveDetections");
                 final SparseArray<TextBlock> items = detections.getDetectedItems();
                 if (items.size() != 0) {
                     barcodeValue.post(new Runnable() {

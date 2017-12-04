@@ -184,6 +184,7 @@ public class RecipeBook {
     void initialize(){
 
         //initializes database
+        //all initialized recipes are credited to damn_delicious.net
         Recipe r = new Recipe("shrimp_fried_rice", "SHRIMP FRIED RICE",
                 "Ingredients:\n" +
                         "\n" +
