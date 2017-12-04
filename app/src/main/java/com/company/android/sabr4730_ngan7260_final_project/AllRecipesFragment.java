@@ -1,5 +1,6 @@
 package com.company.android.sabr4730_ngan7260_final_project;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -25,7 +26,7 @@ import java.util.List;
 public class AllRecipesFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private RecipeAdapter mAdapter;
-
+    public List<Recipe> mRecipeList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,9 +52,7 @@ public class AllRecipesFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.recycler_view_recipe_list, container, false);
 
-        mRecyclerView = (RecyclerView) view
-                .findViewById(R.id.recipe_recycler_view);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
 
         //remove interface from the assignment page
         ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
@@ -89,9 +88,16 @@ public class AllRecipesFragment extends Fragment {
 
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
         itemTouchHelper.attachToRecyclerView(mRecyclerView);
-        updateUI();
+
 
         return view;
+    }
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        mRecyclerView = (RecyclerView) view
+                .findViewById(R.id.recipe_recycler_view);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mRecyclerView.setAdapter(mAdapter);
+        updateUI();
     }
 
     private void updateUI() {
@@ -143,7 +149,10 @@ public class AllRecipesFragment extends Fragment {
     }
 
     private class RecipeAdapter extends RecyclerView.Adapter<RecipeHolder> {
-        private List<Recipe> mRecipeList;
+        public List<Recipe> mRecipeList;
+
+
+
 
         public RecipeAdapter(List<Recipe> recipeList) {
             mRecipeList = recipeList;

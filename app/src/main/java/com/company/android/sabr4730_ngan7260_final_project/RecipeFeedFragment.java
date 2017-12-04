@@ -78,15 +78,14 @@ public class RecipeFeedFragment extends Fragment{
 
 
         }
+        return view;
+    }
+    public void onViewCreated(View view, Bundle savedInstanceState) {
         mRecyclerView = (RecyclerView) view
                 .findViewById(R.id.recipe_recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-
-
+        mRecyclerView.setAdapter(mAdapter);
         updateUI();
-
-        return view;
     }
 
     public boolean checkNetwork() {
